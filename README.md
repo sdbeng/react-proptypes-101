@@ -1,4 +1,4 @@
-# react-proptypes-101
+# react prop-types 101
 ## Introduction to PropTypes
 If you're coming from a strictly typed language, you know the importance of types.
 
@@ -46,3 +46,27 @@ Users.propTypes = {
 PropTypes are great for finding bugs in your components but what I like most about them is their ability to add documentation to a component.
 
 The PropTypes api is very in depth and you can do even more things than just type checking (like making a property required or type checking specific properties of an object). To see the more in depth API, check [https://reactjs.org/docs/typechecking-with-proptypes.html].
+
+Example - Users component requiring an array of objects. Some of the props are bool, not strings.
+
+Note: watch the syntax carefully.
+```
+Users.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    friend: PropTypes.bool.isRequired,
+  })),
+}
+
+ReactDOM.render(
+  <Users list={[
+    {name: 'Dani', friend: true},
+    {name: 'Alan', friend: true},
+    {name: 'Bea', friend: true},
+    {name: 'Foo', friend: false},
+  ]}
+)
+```
+As an additional test, what if I pass friend: 'true', as a string. Would that prop fail or pass?
+
+Discuss with your classmates and send a PR if you would like to solve it.
