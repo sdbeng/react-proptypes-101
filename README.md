@@ -1,4 +1,4 @@
-# react prop-types 101
+# React prop-types 101
 ## Introduction to PropTypes
 If you're coming from a strictly typed language, you know the importance of types.
 
